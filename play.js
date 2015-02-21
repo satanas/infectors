@@ -10,16 +10,14 @@ var playState = {
     this.map = null;
     this.player = null;
 
-    groups.enemies = game.add.group();
-    groups.enemies.enableBody = true;
-
+    groups.viruses = game.add.group();
     groups.capsules = game.add.group();
-    groups.capsules.enableBody = true;
-
     groups.changers = game.add.group();
-    groups.changers.enableBody = true;
-
     groups.hud = game.add.group();
+
+    groups.viruses.enableBody = true;
+    groups.capsules.enableBody = true;
+    groups.changers.enableBody = true;
 
     this.map = game.add.tilemap(game.global.level.toString());
     this.map.addTilesetImage('walls', 'walls');
@@ -36,7 +34,7 @@ var playState = {
     var self = this;
     this.map.objects['Capsules'].forEach(function(e) {
       var y = e.y - self.map.tileHeight;
-      var cap = new Capsule(e.x, y, e.properties.type);
+      var cap = new Capsule(e.x, y, e.properties.type, self.map);
     });
 
     //this.map.objects['Changers'].forEach(function(e) {
@@ -44,21 +42,19 @@ var playState = {
     //  var cap = new Capsule(e.x, y, e.properties.type);
     //});
 
-    //this.map.objects['Enemies'].forEach(function(e) {
-    //  var y = e.y - self.map.tileHeight;
-
-    //  if (e.properties.type === 'acerbus') {
-    //    self.boss = new Acerbus(self.game, self.player, e.x, y);
-    //  }
-    //});
+    this.map.objects['Viruses'].forEach(function(e) {
+      var y = e.y - self.map.tileHeight;
+      //var virus = new Virus(e.x, y, e.properties.type);
+      var virus = new Virus(e.x, y, 'green');
+    });
 
     //groups.walls.debug = true;
 
     //this.game.world.bringToTop(groups.grounds);
     game.world.bringToTop(groups.walls);
     game.world.bringToTop(groups.capsules);
+    game.world.bringToTop(groups.viruses);
     game.world.bringToTop(groups.changers);
-    //this.game.world.bringToTop(groups.enemies);
   },
 
 
