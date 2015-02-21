@@ -13,6 +13,7 @@ var loadState = {
     game.load.image('grounds', 'assets/images/grounds.png');
     game.load.spritesheet('hero', 'assets/images/character.png', 32, 32);
     game.load.spritesheet('capsules', 'assets/images/capsules.png', 32, 32);
+    game.load.spritesheet('viruses', 'assets/images/viruses.png', 32, 32);
 
     game.load.tilemap('1', 'assets/maps/1.json', null, Phaser.Tilemap.TILED_JSON);
   },
