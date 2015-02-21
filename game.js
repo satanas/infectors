@@ -6,7 +6,7 @@ game.global = {
 }
 var debug = false;
 var groups = {};
-var capsuleType = {
+var colorVariant = {
   RED: 'red',
   BLUE: 'blue',
   GREEN: 'green'
