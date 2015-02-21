@@ -7,11 +7,11 @@ var Hero = function(x, y, color, map) {
   //this.body.setSize(32, 32, 0, 0);
   this.body.allowGravity = false;
   this.cursors = game.input.keyboard.createCursorKeys();
-  this.animations.add('down-' + capsuleType.RED, [0, 1, 2], 12, true);
-  this.animations.add('left-' + capsuleType.RED, [3, 4, 5], 12, true);
-  this.animations.add('right-' + capsuleType.RED, [6, 7, 8], 12, true);
-  this.animations.add('up-' + capsuleType.RED, [9, 10, 11], 12, true);
-  this.color = 'red';
+  this.animations.add('down-' + colorVariant.RED, [0, 1, 2], 12, true);
+  this.animations.add('left-' + colorVariant.RED, [3, 4, 5], 12, true);
+  this.animations.add('right-' + colorVariant.RED, [6, 7, 8], 12, true);
+  this.animations.add('up-' + colorVariant.RED, [9, 10, 11], 12, true);
+  this.variant = 'red';
   this.walking = false;
   this.nextX = null;
   this.nextY = null;
@@ -74,21 +74,26 @@ Hero.prototype.move = function(xDir, yDir) {
     newY = this.y;
   }
 
-  console.log(this.isCapsule(newX, newY));
-  // Change the frame but do not move
+  console.log('player', this.x, this.y);
+  console.log('next pos', newX, newY);
+  // TODO: Change the frame but do not move
   if (this.isWalkable(newX, newY)) {
-    this.walking = true;
-    this.animations.play(direction + '-red');
-    var tween = game.add.tween(this);
-    tween.to({
-      x: newX,
-      y: newY
-    }, 200, Phaser.Easing.Linear.None, true);
-    tween.onComplete.add(function(){
-      this.walking = false;
-      this.animations.stop();
-      this.frame = frame;
-    }, this);
+    var capsule = this.findCapsule(newX, newY);
+    console.log('capsule', capsule);
+    if ((capsule === null) || (capsule.variant === this.variant && capsule.move(direction))) {
+      this.walking = true;
+      this.animations.play(direction + '-red');
+      var tween = game.add.tween(this);
+      tween.to({
+        x: newX,
+        y: newY
+      }, 200, Phaser.Easing.Linear.None, true);
+      tween.onComplete.add(function(){
+        this.walking = false;
+        this.animations.stop();
+        this.frame = frame;
+      }, this);
+    }
   }
 };
 
@@ -96,11 +101,12 @@ Hero.prototype.isWalkable = function(x, y) {
   return !this.map.hasTile(x / 32, y / 32, 'Walls');
 };
 
-Hero.prototype.isCapsule = function(x, y) {
-  var rtn = false;
+Hero.prototype.findCapsule = function(x, y) {
+  var rtn = null;
+  //console.log('findCapsule', x, y);
   groups.capsules.forEachAlive(function(cap) {
-    console.log(cap.color, cap.x, cap.y, x, y);
-    if (cap.x === x && cap.y === y) rtn = true;
+    //console.log('  ', cap.x, cap.y, x, y);
+    if (cap.x === x && cap.y === y) rtn = cap;
   });
   return rtn;
 };
