@@ -53,8 +53,6 @@ var playState = {
     this.player = new Hero(e.x, y, variant, this.map);
 
     //groups.walls.debug = true;
-
-    //this.game.world.bringToTop(groups.grounds);
   },
 
 

@@ -38,7 +38,6 @@ Hero.prototype.update = function() {
   if (!this.walking) {
     this.checkMovement();
     this.checkChanger();
-    //this.render();
   }
 };
 
@@ -60,7 +59,6 @@ Hero.prototype.move = function(xDir, yDir) {
   // TODO: Change the frame but do not move
   if (this.isWalkable(newX, newY)) {
     var capsule = this.findCapsule(newX, newY);
-    console.log('capsule', capsule);
     if ((capsule === null) || (capsule.variant === this.variant && capsule.move(this.direction))) {
       this.walking = true;
       this.animations.play(this.getAnimName());
@@ -121,4 +119,4 @@ Hero.prototype.getAnimName = function(direction, color) {
   } else {
     return direction + '-' + color;
   }
-};
+}
