@@ -19,8 +19,8 @@ var Capsule = function(x, y, type, map) {
 Capsule.prototype = Object.create(Phaser.Sprite.prototype);
 Capsule.prototype.constructor = Capsule;
 
-//Capsule.prototype.update = function() {
-//};
+Capsule.prototype.update = function() {
+};
 
 Capsule.prototype.move = function(direction) {
   var newX = this.x;
@@ -55,26 +55,10 @@ Capsule.prototype.move = function(direction) {
 
 Capsule.prototype.isMovable= function(x, y) {
   var isWall = this.map.hasTile(x / 32, y / 32, 'Walls');
-  var isCapsule = this.findCapsule(x, y);
-  var virus = this.findVirus(x, y);
+  var isCapsule = findCapsule(x, y);
+  var virus = findVirus(x, y);
   var isVirus = (virus && virus.variant !== this.variant) ? true : false;
   if (virus)
     console.log('virus', virus.variant, this.variant);
   return (!isWall && !isCapsule && !isVirus);
-};
-
-Capsule.prototype.findCapsule = function(x, y) {
-  var rtn = null;
-  groups.capsules.forEachAlive(function(cap) {
-    if (cap.x === x && cap.y === y) rtn = cap;
-  });
-  return rtn;
-};
-
-Capsule.prototype.findVirus = function(x, y) {
-  var rtn = null;
-  groups.viruses.forEachAlive(function(v) {
-    if (v.x === x && v.y === y) rtn = v;
-  });
-  return rtn;
 };

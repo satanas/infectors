@@ -58,7 +58,7 @@ Hero.prototype.move = function(xDir, yDir) {
 
   // TODO: Change the frame but do not move
   if (this.isWalkable(newX, newY)) {
-    var capsule = this.findCapsule(newX, newY);
+    var capsule = findCapsule(newX, newY);
     if ((capsule === null) || (capsule.variant === this.variant && capsule.move(this.direction))) {
       this.walking = true;
       this.animations.play(this.getAnimName());
@@ -103,14 +103,6 @@ Hero.prototype.checkChanger = function() {
 
 Hero.prototype.isWalkable = function(x, y) {
   return !this.map.hasTile(x / 32, y / 32, 'Walls');
-};
-
-Hero.prototype.findCapsule = function(x, y) {
-  var rtn = null;
-  groups.capsules.forEachAlive(function(cap) {
-    if (cap.x === x && cap.y === y) rtn = cap;
-  });
-  return rtn;
 };
 
 Hero.prototype.getAnimName = function(direction, color) {
