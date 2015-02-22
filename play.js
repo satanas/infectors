@@ -26,35 +26,35 @@ var playState = {
     this.map.createLayer('Grounds');
     this.map.setCollisionBetween(1, 18, true, 'Walls');
 
-    var e = this.map.objects['Hero'][0];
-    var y = e.y - this.map.tileHeight;
-    var color = e.properties.color;
-    this.player = new Hero(e.x, y, null, this.map);
-
     var self = this;
     this.map.objects['Capsules'].forEach(function(e) {
       var y = e.y - self.map.tileHeight;
       var cap = new Capsule(e.x, y, e.properties.type, self.map);
     });
 
-    //this.map.objects['Changers'].forEach(function(e) {
-    //  var y = e.y - self.map.tileHeight;
-    //  var cap = new Capsule(e.x, y, e.properties.type);
-    //});
+    this.map.objects['Changers'].forEach(function(e) {
+      var y = e.y - self.map.tileHeight;
+      var chg = new Changer(e.x, y, e.properties.type);
+    });
 
     this.map.objects['Viruses'].forEach(function(e) {
       var y = e.y - self.map.tileHeight;
-      //var virus = new Virus(e.x, y, e.properties.type);
-      var virus = new Virus(e.x, y, 'green');
+      var virus = new Virus(e.x, y, e.properties.type);
     });
 
-    //groups.walls.debug = true;
-
-    //this.game.world.bringToTop(groups.grounds);
     game.world.bringToTop(groups.walls);
     game.world.bringToTop(groups.capsules);
     game.world.bringToTop(groups.viruses);
     game.world.bringToTop(groups.changers);
+
+    var e = this.map.objects['Hero'][0];
+    var y = e.y - this.map.tileHeight;
+    var variant = e.properties.color;
+    this.player = new Hero(e.x, y, variant, this.map);
+
+    //groups.walls.debug = true;
+
+    //this.game.world.bringToTop(groups.grounds);
   },
 
 
