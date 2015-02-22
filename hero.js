@@ -1,22 +1,27 @@
 'use strict';
 
-var Hero = function(x, y, color, map) {
+var Hero = function(x, y, variant, map) {
   Phaser.Sprite.call(this, game, x, y, 'hero', 0);
 
-  game.physics.arcade.enable(this);
-  //this.body.setSize(32, 32, 0, 0);
-  this.body.allowGravity = false;
+  this.map = map;
+  this.variant = variant;
+  this.walking = false;
   this.cursors = game.input.keyboard.createCursorKeys();
+
   this.animations.add('down-' + colorVariant.RED, [0, 1, 2], 12, true);
   this.animations.add('left-' + colorVariant.RED, [3, 4, 5], 12, true);
   this.animations.add('right-' + colorVariant.RED, [6, 7, 8], 12, true);
   this.animations.add('up-' + colorVariant.RED, [9, 10, 11], 12, true);
-  this.variant = 'red';
-  this.walking = false;
-  this.nextX = null;
-  this.nextY = null;
 
-  this.map = map;
+  this.animations.add('down-' + colorVariant.BLUE, [12, 13, 14], 12, true);
+  this.animations.add('left-' + colorVariant.BLUE, [15, 16, 17], 12, true);
+  this.animations.add('right-' + colorVariant.BLUE, [18, 19, 20], 12, true);
+  this.animations.add('up-' + colorVariant.BLUE, [21, 22, 23], 12, true);
+
+  this.animations.add('down-' + colorVariant.GREEN, [24, 25, 26], 12, true);
+  this.animations.add('left-' + colorVariant.GREEN, [27, 28, 29], 12, true);
+  this.animations.add('right-' + colorVariant.GREEN, [30, 31, 32], 12, true);
+  this.animations.add('up-' + colorVariant.GREEN, [33, 34, 35], 12, true);
 
   game.add.existing(this);
 };
@@ -24,30 +29,11 @@ var Hero = function(x, y, color, map) {
 Hero.prototype = Object.create(Phaser.Sprite.prototype);
 Hero.prototype.constructor = Hero;
 
-Hero.prototype.onCollision = function(self, obj) {
-  console.log('ble', self, obj);
+Hero.prototype.changeColor = function(newColor) {
+  this.variant = newColor;
 };
 
 Hero.prototype.update = function() {
-  //game.physics.arcade.collide(this, groups.walls);
-
-  var self = this;
-  if (groups.walls) {
-    //var tiles = groups.walls.getTiles(this.x - 32, this.y, 32, 32);
-    //console.log('tiles', tiles);
-    //tiles.forEach(function(item) {
-    //  console.log('tile', self.x - 32, self.y, item.x, item.y);
-    //});
-
-    ////var _x = Math.floor((this.x - 32) / 32);
-    ////var _y = (this.y / 32;
-    ////var be = this.map.hasTile(_x, _y, 'Walls');
-    //var layer = this.map.getLayer('Walls');
-    //console.log('ble', this.x, _x, _y);
-    //console.log('ble', this.map.layers[layer].data[_y][_x].index);
-    ////console.log(be);
-  }
-
   if (!this.walking) {
     var xDir = (this.cursors.left.isDown ? -1 : (this.cursors.right.isDown ? 1: 0));
     var yDir = (this.cursors.up.isDown ? -1 : (this.cursors.down.isDown ? 1: 0));
@@ -55,6 +41,12 @@ Hero.prototype.update = function() {
       this.move(null, yDir);
     } else if (xDir !== 0) {
       this.move(xDir, null);
+    }
+    var chg = this.onChanger();
+    console.log('chg', chg, this.variant);
+    if (chg !== null && chg.variant !== this.variant) {
+      console.log('transformation');
+      this.variant = chg.variant;
     }
   }
 };
@@ -82,7 +74,7 @@ Hero.prototype.move = function(xDir, yDir) {
     console.log('capsule', capsule);
     if ((capsule === null) || (capsule.variant === this.variant && capsule.move(direction))) {
       this.walking = true;
-      this.animations.play(direction + '-red');
+      this.animations.play(direction + '-' + this.variant);
       var tween = game.add.tween(this);
       tween.to({
         x: newX,
@@ -103,10 +95,18 @@ Hero.prototype.isWalkable = function(x, y) {
 
 Hero.prototype.findCapsule = function(x, y) {
   var rtn = null;
-  //console.log('findCapsule', x, y);
   groups.capsules.forEachAlive(function(cap) {
-    //console.log('  ', cap.x, cap.y, x, y);
     if (cap.x === x && cap.y === y) rtn = cap;
+  });
+  return rtn;
+};
+
+Hero.prototype.onChanger = function() {
+  var rtn = null;
+  var self = this;
+  groups.changers.forEachAlive(function(chg) {
+    console.log(chg.x, chg.y, self.x, self.y);
+    if (chg.x === self.x && chg.y === self.y) rtn = chg;
   });
   return rtn;
 };
