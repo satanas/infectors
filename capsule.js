@@ -3,8 +3,6 @@
 var Capsule = function(x, y, type, map) {
   Phaser.Sprite.call(this, game, x, y, 'capsules', 0);
 
-  //game.physics.arcade.enable(this);
-  //this.body.allowGravity = false;
   this.map = map;
   this.variant = type;
   this.moving = false;
@@ -15,7 +13,6 @@ var Capsule = function(x, y, type, map) {
   } else if (type === colorVariant.GREEN) {
     this.frame = 2;
   }
-  console.log(x, y, type);
   groups.capsules.add(this);
 };
 
