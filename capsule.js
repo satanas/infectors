@@ -13,6 +13,7 @@ var Capsule = function(x, y, type, map) {
   } else if (type === colorVariant.GREEN) {
     this.frame = 2;
   }
+  this.animations.add('capture', [3, 4, 3, 4, 3, 4, 5], 20, false);
   groups.capsules.add(this);
 };
 
@@ -20,6 +21,13 @@ Capsule.prototype = Object.create(Phaser.Sprite.prototype);
 Capsule.prototype.constructor = Capsule;
 
 Capsule.prototype.update = function() {
+  if (!this.moving) {
+    var virus = findVirus(this.x, this.y);
+    if (virus && virus.variant === this.variant) {
+      virus.kill();
+      this.animations.play('capture');
+    }
+  }
 };
 
 Capsule.prototype.move = function(direction) {
