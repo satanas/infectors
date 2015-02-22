@@ -6,12 +6,6 @@ game.global = {
 }
 var debug = false;
 var groups = {};
-var colorVariant = {
-  RED: 'red',
-  BLUE: 'blue',
-  GREEN: 'green'
-};
-var tileSize = 32;
 
 game.state.add('boot', bootState);
 game.state.add('load', loadState);
