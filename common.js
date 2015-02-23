@@ -21,7 +21,7 @@ function findVirus(x, y) {
   return _find(x, y, groups.viruses);
 };
 
-function findChangers(x, y) {
+function findChanger(x, y) {
   return _find(x, y, groups.changers);
 };
 

@@ -65,7 +65,8 @@ Capsule.prototype.move = function(direction) {
 Capsule.prototype.isMovable= function(x, y) {
   var isWall = this.map.hasTile(x / 32, y / 32, 'Walls');
   var isCapsule = findCapsule(x, y);
+  var isChanger = findChanger(x, y);
   var virus = findVirus(x, y);
   var isVirus = (virus && virus.variant !== this.variant) ? true : false;
-  return (!isWall && !isCapsule && !isVirus && !this.blocked);
+  return (!isWall && !isCapsule && !isVirus && !isChanger && !this.blocked);
 };
