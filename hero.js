@@ -44,8 +44,6 @@ Hero.prototype.update = function() {
 
 Hero.prototype.move = function(xDir, yDir) {
   var newX, newY;
-  var xDir = (this.cursors.left.isDown ? -1 : (this.cursors.right.isDown ? 1: 0));
-  var yDir = (this.cursors.up.isDown ? -1 : (this.cursors.down.isDown ? 1: 0));
 
   if (yDir) {
     this.direction = (yDir > 0) ? 'down' : 'up';
@@ -83,29 +81,6 @@ Hero.prototype.render = function() {
   this.animations.getAnimation(this.getAnimName(this.direction, this.variant)).frame = 0;
 };
 
-Hero.prototype.checkMovement = function() {
-  var xDir = (this.cursors.left.isDown ? -1 : (this.cursors.right.isDown ? 1: 0));
-  var yDir = (this.cursors.up.isDown ? -1 : (this.cursors.down.isDown ? 1: 0));
-  if (yDir !== 0) {
-    this.move(null, yDir);
-  } else if (xDir !== 0) {
-    this.move(xDir, null);
-  }
-};
-
-Hero.prototype.checkChanger = function() {
-  var chg = null, self = this;
-  groups.changers.forEachAlive(function(c) {
-    if (c.x === self.x && c.y === self.y) chg = c;
-  });
-
-  if (chg !== null && chg.variant !== this.variant) {
-    this.variant = chg.variant;
-    this.animations.stop();
-    this.animations.getAnimation(this.getAnimName()).frame = 0;
-  }
-};
-
 Hero.prototype.isWalkable = function(x, y) {
   return !this.map.hasTile(x / 32, y / 32, 'Walls');
 };
@@ -117,3 +92,24 @@ Hero.prototype.getAnimName = function(direction, color) {
     return direction + '-' + color;
   }
 }
+
+Hero.prototype.checkMovement = function() {
+  var xDir = (this.cursors.left.isDown ? -1 : (this.cursors.right.isDown ? 1: 0));
+  var yDir = (this.cursors.up.isDown ? -1 : (this.cursors.down.isDown ? 1: 0));
+  if (yDir !== 0) {
+    this.move(null, yDir);
+  } else if (xDir !== 0) {
+    this.move(xDir, null);
+  }
+};
+
+Hero.prototype.checkChanger = function() {
+  var self = this;
+  var chg = findChanger(this.x, this.y);
+
+  if (chg !== null && chg.variant !== this.variant) {
+    this.variant = chg.variant;
+    this.animations.stop();
+    this.animations.getAnimation(this.getAnimName()).frame = 0;
+  }
+};
