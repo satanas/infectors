@@ -49,8 +49,9 @@ var playState = {
 
     var e = this.map.objects['Hero'][0];
     var y = e.y - this.map.tileHeight;
+    var facing = e.properties.facing || DIRECTION.DOWN;
     var variant = e.properties.color;
-    this.player = new Hero(e.x, y, variant, this.map);
+    this.player = new Hero(e.x, y, variant, facing, this.map);
 
     //groups.walls.debug = true;
   },

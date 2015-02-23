@@ -1,12 +1,12 @@
 'use strict';
 
-var Hero = function(x, y, variant, map) {
+var Hero = function(x, y, variant, facing, map) {
   Phaser.Sprite.call(this, game, x, y, 'hero', 0);
 
   this.map = map;
   this.walking = false;
   this.variant = variant;
-  this.direction = DIRECTION.DOWN;
+  this.direction = facing;
   this.cursors = game.input.keyboard.createCursorKeys();
 
   this.animations.add(this.getAnimName(DIRECTION.DOWN, colorVariant.RED), [0, 1, 2], 12, true);
@@ -24,6 +24,7 @@ var Hero = function(x, y, variant, map) {
   this.animations.add(this.getAnimName(DIRECTION.RIGHT, colorVariant.GREEN), [30, 31, 32], 12, true);
   this.animations.add(this.getAnimName(DIRECTION.UP, colorVariant.GREEN), [33, 34, 35], 12, true);
 
+  this.render();
   game.add.existing(this);
 };
 
@@ -71,11 +72,15 @@ Hero.prototype.move = function(xDir, yDir) {
 
       tween.onComplete.add(function(){
         this.walking = false;
-        this.animations.stop();
-        this.animations.getAnimation(this.getAnimName(this.direction, this.variant)).frame = 0;
+        this.render();
       }, this);
     }
   }
+};
+
+Hero.prototype.render = function() {
+  this.animations.stop();
+  this.animations.getAnimation(this.getAnimName(this.direction, this.variant)).frame = 0;
 };
 
 Hero.prototype.checkMovement = function() {
