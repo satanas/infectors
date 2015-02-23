@@ -10,6 +10,9 @@ var playState = {
     this.map = null;
     this.player = null;
 
+    game.global.moves = 0;
+    game.global.time = 0;
+
     groups.viruses = game.add.group();
     groups.capsules = game.add.group();
     groups.changers = game.add.group();
@@ -56,6 +59,12 @@ var playState = {
     //groups.walls.debug = true;
   },
 
+  update: function() {
+    game.global.time += game.time.elapsed;
+    if (groups.viruses.length === 0) {
+      game.state.start('summary');
+    }
+  }
 
   //render: function() {
   //  game.debug.body(this.player);
