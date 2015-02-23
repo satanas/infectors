@@ -21,6 +21,10 @@ function findVirus(x, y) {
   return _find(x, y, groups.viruses);
 };
 
+function findChangers(x, y) {
+  return _find(x, y, groups.changers);
+};
+
 function _find(x, y, group) {
   var rtn = null;
   group.forEachAlive(function(v) {
