@@ -25,3 +25,9 @@ var Virus = function(x, y, type) {
 
 Virus.prototype = Object.create(Phaser.Sprite.prototype);
 Virus.prototype.constructor = Virus;
+
+Virus.prototype.update = function() {
+  if (!this.alive) {
+    this.destroy();
+  }
+};
