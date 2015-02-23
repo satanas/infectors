@@ -70,6 +70,7 @@ Hero.prototype.move = function(xDir, yDir) {
 
       tween.onComplete.add(function(){
         this.walking = false;
+        game.global.moves += 1;
         this.render();
       }, this);
     }
