@@ -6,6 +6,7 @@ var Capsule = function(x, y, type, map) {
   this.map = map;
   this.variant = type;
   this.moving = false;
+  this.blocked = false;
   if (type === colorVariant.RED) {
     this.frame = 0;
   } else if (type === colorVariant.BLUE) {
@@ -25,26 +26,26 @@ Capsule.prototype.update = function() {
     var virus = findVirus(this.x, this.y);
     if (virus && virus.variant === this.variant) {
       virus.kill();
-      this.animations.play('capture');
+      this.capture();
     }
   }
 };
 
+Capsule.prototype.capture = function() {
+  this.blocked = true;
+  this.animations.play('capture');
+};
+
 Capsule.prototype.move = function(direction) {
-  var newX = this.x;
-  var newY = this.y;
-  switch(direction) {
-    case 'up':
-      newY -= tileSize;
-      break;
-    case 'down':
-      newY += tileSize;
-      break;
-    case 'left':
-      newX -= tileSize;
-      break;
-    case 'right':
-      newX += tileSize;
+  var newX = this.x, newY = this.y;
+  if (direction === DIRECTION.UP) {
+    newY -= tileSize;
+  } else if (direction === DIRECTION.DOWN) {
+    newY += tileSize;
+  } else if (direction === DIRECTION.LEFT) {
+    newX -= tileSize;
+  } else if (direction === DIRECTION.RIGHT) {
+    newX += tileSize;
   }
   if (this.isMovable(newX, newY)) {
     this.moving = true;
@@ -66,7 +67,5 @@ Capsule.prototype.isMovable= function(x, y) {
   var isCapsule = findCapsule(x, y);
   var virus = findVirus(x, y);
   var isVirus = (virus && virus.variant !== this.variant) ? true : false;
-  if (virus)
-    console.log('virus', virus.variant, this.variant);
-  return (!isWall && !isCapsule && !isVirus);
+  return (!isWall && !isCapsule && !isVirus && !this.blocked);
 };
