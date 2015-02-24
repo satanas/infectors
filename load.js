@@ -18,6 +18,7 @@ var loadState = {
     game.load.spritesheet('changers', 'assets/images/changers.png', 32, 32);
 
     game.load.tilemap('1', 'assets/maps/1.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('2', 'assets/maps/2.json', null, Phaser.Tilemap.TILED_JSON);
   },
 
   create: function() {

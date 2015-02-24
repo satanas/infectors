@@ -10,6 +10,6 @@ var menuState = {
   },
 
   start: function() {
-    game.state.start('summary');
+    game.state.start('play');
   }
 };
