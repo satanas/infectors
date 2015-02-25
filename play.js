@@ -57,6 +57,9 @@ var playState = {
     this.player = new Hero(e.x, y, variant, facing, this.map);
 
     //groups.walls.debug = true;
+    this.pausedGame = false;
+    this.pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
+    this.pauseKey.onUp.add(this.togglePause, this);
   },
 
   update: function() {
@@ -64,6 +67,15 @@ var playState = {
     if (groups.viruses.length === 0) {
       game.state.start('summary');
     }
+  },
+
+  pauseUpdate: function() {
+    console.log('paused :)', this.pausedGame);
+  },
+
+  togglePause: function() {
+    this.pausedGame = !this.pausedGame;
+    game.paused = this.pausedGame;
   }
 
   //render: function() {
