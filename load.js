@@ -12,6 +12,8 @@ var loadState = {
     game.load.image('walls', 'assets/images/walls.png');
     game.load.image('grounds', 'assets/images/grounds.png');
     game.load.image('summary', 'assets/images/summary.png');
+    game.load.image('menu', 'assets/images/menu.png');
+    game.load.image('cursor', 'assets/images/cursor.png');
     game.load.spritesheet('hero', 'assets/images/character.png', 32, 32);
     game.load.spritesheet('capsules', 'assets/images/capsules.png', 32, 32);
     game.load.spritesheet('viruses', 'assets/images/viruses.png', 32, 32);
