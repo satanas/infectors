@@ -78,4 +78,4 @@ IngameMenu.prototype.executeMenuOption = function() {
     game.state.start('menu');
   }
   this.play.togglePause();
-}
+};
