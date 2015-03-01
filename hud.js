@@ -19,6 +19,6 @@ HUD.prototype = Object.create(Phaser.Sprite.prototype);
 HUD.prototype.constructor = HUD;
 
 HUD.prototype.update = function() {
-  this.movesLabel.setText(game.global.moves);
+  this.movesLabel.setText(game.global.moves.toString());
   this.virusesLabel.setText(groups.viruses.length.toString());
 };
