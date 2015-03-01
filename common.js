@@ -12,6 +12,9 @@ var DIRECTION = {
   LEFT: 'left',
   RIGHT: 'right'
 };
+var uiFonts = {
+  HUD: 'zerothre'
+};
 
 function findCapsule(x, y) {
   return _find(x, y, groups.capsules);

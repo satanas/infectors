@@ -8,12 +8,15 @@ var loadState = {
     progressBar.anchor.setTo(0.5, 0.5);
     game.load.setPreloadSprite(progressBar);
 
+    game.load.bitmapFont('zerothre', 'assets/fonts/zerothre.png', 'assets/fonts/zerothre.fnt');
+
     game.load.image('title', 'assets/images/title.png');
     game.load.image('walls', 'assets/images/walls.png');
     game.load.image('grounds', 'assets/images/grounds.png');
     game.load.image('summary', 'assets/images/summary.png');
     game.load.image('menu', 'assets/images/menu.png');
     game.load.image('cursor', 'assets/images/cursor.png');
+    game.load.image('hud', 'assets/images/hud.png');
 
     game.load.spritesheet('hero', 'assets/images/character.png', 32, 32);
     game.load.spritesheet('capsules', 'assets/images/capsules.png', 32, 32);

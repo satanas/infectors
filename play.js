@@ -65,9 +65,12 @@ var playState = {
     this.pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
     this.pauseKey.onUp.add(this.togglePause, this);
     this.ingameMenu = new IngameMenu(this);
+
+    this.hud = new HUD();
   },
 
   update: function() {
+    this.hud.update();
     game.global.time += game.time.elapsed;
     if (groups.viruses.length === 0) {
       this.sceneDelay -= game.time.elapsed;
@@ -78,7 +81,9 @@ var playState = {
   },
 
   pauseUpdate: function() {
-    this.ingameMenu.update();
+    if (this.pausedGame) {
+      this.ingameMenu.update();
+    }
   },
 
   togglePause: function() {
