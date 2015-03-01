@@ -13,6 +13,7 @@ var DIRECTION = {
   RIGHT: 'right'
 };
 var uiFonts = {
+  TITLE: 'engeexpa',
   HUD: 'zerothre'
 };
 
