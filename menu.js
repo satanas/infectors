@@ -7,6 +7,8 @@ var menuState = {
 
     var enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     enterKey.onDown.addOnce(this.start, this);
+    this.bgmSound = game.add.audio('main');
+    this.bgmSound.play();
   },
 
   start: function() {

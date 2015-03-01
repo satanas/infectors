@@ -10,6 +10,9 @@ var playState = {
     this.map = null;
     this.player = null;
     this.sceneDelay = 500;
+    this.bgmPool = new AudioPool(['track1', 'track2', 'track3', 'track4', 'track5', 'track6']);
+    game.sound.stopAll();
+    this.bgmPool.randomPlay();
 
     game.global.moves = 0;
     game.global.time = 0;

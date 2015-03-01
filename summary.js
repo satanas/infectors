@@ -21,6 +21,9 @@ var summaryState = {
 
     var enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     enterKey.onDown.addOnce(this.next, this);
+    game.sound.stopAll();
+    this.bgmSound = game.add.audio('finish');
+    this.bgmSound.play();
   },
 
   next: function() {

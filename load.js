@@ -20,11 +20,22 @@ var loadState = {
     game.load.spritesheet('viruses', 'assets/images/viruses.png', 32, 32);
     game.load.spritesheet('changers', 'assets/images/changers.png', 32, 32);
 
+    // SFX
     game.load.audio('capture', 'assets/sounds/capture.mp3');
     game.load.audio('changer', 'assets/sounds/changer.mp3');
     game.load.audio('walking', 'assets/sounds/walking.mp3');
     game.load.audio('option', 'assets/sounds/cursor.mp3');
     game.load.audio('select', 'assets/sounds/select.mp3');
+
+    // BGM
+    game.load.audio('main', 'assets/sounds/main.mp3', 0.75, true);
+    game.load.audio('finish', 'assets/sounds/finish.mp3', 0.75);
+    game.load.audio('track1', 'assets/sounds/track1.mp3', 0.75, true);
+    game.load.audio('track2', 'assets/sounds/track2.mp3', 0.75, true);
+    game.load.audio('track3', 'assets/sounds/track3.mp3', 0.75, true);
+    game.load.audio('track4', 'assets/sounds/track4.mp3', 0.75, true);
+    game.load.audio('track5', 'assets/sounds/track5.mp3', 0.75, true);
+    game.load.audio('track6', 'assets/sounds/track6.mp3', 0.75, true);
 
     game.load.tilemap('1', 'assets/maps/1.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.tilemap('2', 'assets/maps/2.json', null, Phaser.Tilemap.TILED_JSON);
