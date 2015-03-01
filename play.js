@@ -9,6 +9,7 @@ var playState = {
   create: function() {
     this.map = null;
     this.player = null;
+    this.sceneDelay = 500;
 
     game.global.moves = 0;
     game.global.time = 0;
@@ -66,7 +67,10 @@ var playState = {
   update: function() {
     game.global.time += game.time.elapsed;
     if (groups.viruses.length === 0) {
-      game.state.start('summary');
+      this.sceneDelay -= game.time.elapsed;
+      if (this.sceneDelay <= 0) {
+        game.state.start('summary');
+      }
     }
   },
 
