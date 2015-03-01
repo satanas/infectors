@@ -15,6 +15,7 @@ var Capsule = function(x, y, type, map) {
     this.frame = 2;
   }
   this.animations.add('capture', [3, 4, 3, 4, 3, 4, 5], 20, false);
+  this.captureSound = this.game.add.audio('capture');
   groups.capsules.add(this);
 };
 
@@ -33,6 +34,7 @@ Capsule.prototype.update = function() {
 
 Capsule.prototype.capture = function() {
   this.blocked = true;
+  this.captureSound.play();
   this.animations.play('capture');
 };
 

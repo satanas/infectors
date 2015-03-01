@@ -24,6 +24,9 @@ var Hero = function(x, y, variant, facing, map) {
   this.animations.add(this.getAnimName(DIRECTION.RIGHT, colorVariant.GREEN), [30, 31, 32], 12, true);
   this.animations.add(this.getAnimName(DIRECTION.UP, colorVariant.GREEN), [33, 34, 35], 12, true);
 
+  this.changerSound = game.add.audio('changer');
+  this.walkingSound = game.add.audio('walking');
+
   this.render();
   game.add.existing(this);
 };
@@ -60,6 +63,7 @@ Hero.prototype.move = function(xDir, yDir) {
     var capsule = findCapsule(newX, newY);
     if ((capsule === null) || (capsule.variant === this.variant && capsule.move(this.direction))) {
       this.walking = true;
+      this.walkingSound.play();
       this.animations.play(this.getAnimName());
 
       var tween = game.add.tween(this);
@@ -109,6 +113,7 @@ Hero.prototype.checkChanger = function() {
   var chg = findChanger(this.x, this.y);
 
   if (chg !== null && chg.variant !== this.variant) {
+    this.changerSound.play();
     this.variant = chg.variant;
     this.animations.stop();
     this.animations.getAnimation(this.getAnimName()).frame = 0;

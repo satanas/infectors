@@ -4,6 +4,9 @@ var IngameMenu = function(play) {
   this.play = play;
   this.option = 0;
 
+  this.cursorSound = game.add.audio('option');
+  this.selectsound = game.add.audio('select');
+
   this.pauseKeyUp = game.input.keyboard.addKey(Phaser.Keyboard.UP);
   this.pauseKeyDown = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
   this.pauseKeyEnter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -55,16 +58,20 @@ IngameMenu.prototype.hide = function() {
 };
 
 IngameMenu.prototype.moveCursorDown = function() {
-    this.option += 1;
-    if (this.option > 2) this.option = 0;
-  };
+  this.cursorSound.play();
+  this.option += 1;
+  if (this.option > 2) this.option = 0;
+};
 
 IngameMenu.prototype.moveCursorUp = function() {
-    this.option -= 1;
-    if (this.option < 0) this.option = 2;
-  };
+  this.cursorSound.play();
+  this.option -= 1;
+  if (this.option < 0) this.option = 2;
+};
 
 IngameMenu.prototype.executeMenuOption = function() {
+  this.selectsound.play();
+
   if (this.option === 1) {
     game.state.start('play');
   } else if (this.option === 2) {
