@@ -5,7 +5,7 @@ var IngameMenu = function(play) {
   this.option = 0;
 
   this.cursorSound = game.add.audio('option');
-  this.selectsound = game.add.audio('select');
+  this.selectSound = game.add.audio('select');
 
   this.pauseKeyUp = game.input.keyboard.addKey(Phaser.Keyboard.UP);
   this.pauseKeyDown = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
@@ -70,7 +70,7 @@ IngameMenu.prototype.moveCursorUp = function() {
 };
 
 IngameMenu.prototype.executeMenuOption = function() {
-  this.selectsound.play();
+  this.selectSound.play();
 
   if (this.option === 1) {
     game.state.start('play');
