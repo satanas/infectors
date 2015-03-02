@@ -77,7 +77,11 @@ var playState = {
     if (groups.viruses.length === 0) {
       this.sceneDelay -= game.time.elapsed;
       if (this.sceneDelay <= 0) {
-        game.state.start('summary');
+        if (game.global.level === game.global.totalLevels) {
+          game.state.start('win');
+        } else {
+          game.state.start('summary');
+        }
       }
     }
   },

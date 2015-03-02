@@ -4,7 +4,8 @@ var game = new Phaser.Game(640, 480, Phaser.AUTO, 'game');
 game.global = {
   level: 1,
   moves: 0,
-  time: 0
+  time: 0,
+  totalLevels: 10
 }
 var debug = false;
 var groups = {};

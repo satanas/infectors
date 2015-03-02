@@ -41,8 +41,9 @@ var loadState = {
     game.load.audio('track5', 'assets/sounds/track5.mp3', 0.75, true);
     game.load.audio('track6', 'assets/sounds/track6.mp3', 0.75, true);
 
-    game.load.tilemap('1', 'assets/maps/1.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.tilemap('2', 'assets/maps/2.json', null, Phaser.Tilemap.TILED_JSON);
+    for (var i=1; i<=game.global.totalLevels; i++) {
+      game.load.tilemap(i.toString(), 'assets/maps/' + i.toString() + '.json', null, Phaser.Tilemap.TILED_JSON);
+    }
   },
 
   create: function() {

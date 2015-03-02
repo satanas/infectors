@@ -7,7 +7,7 @@ var summaryState = {
     var sec = Math.floor(time % 60).toString();
     if (min.length === 1) min = "0" + min
     if (sec.length === 1) sec = "0" + sec
-    game.add.image(0, 0, 'summary');
+    //game.add.image(0, 0, 'summary');
     bitmapTextCentered(90, 'engeexpa', 'STAGE CLEARED', 38);
     // Score
     game.add.bitmapText(235, 170, 'engeexpa', 'Your steps:', 25);
