@@ -9,7 +9,10 @@ var AudioPool = function(keys) {
   }
 };
 
-AudioPool.prototype.randomPlay = function() {
+AudioPool.prototype.randomPlay = function(loop, volume) {
+  var volume = (volume === undefined) ? 1.0 : volume
+  var loop = (loop === undefined) ? false : loop
   var index = Math.floor(Math.random() * this.keys.length);
-  this.sounds[index].play();
+
+  this.sounds[index].play('', 0, 1, volume, loop);
 };
