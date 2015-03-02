@@ -113,6 +113,7 @@ Hero.prototype.checkChanger = function() {
   var chg = findChanger(this.x, this.y);
 
   if (chg !== null && chg.variant !== this.variant) {
+    var transf = new Transformation(this.x, this.y);
     this.changerSound.play();
     this.variant = chg.variant;
     this.animations.stop();

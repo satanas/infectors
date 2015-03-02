@@ -22,6 +22,7 @@ var loadState = {
     game.load.spritesheet('capsules', 'assets/images/capsules.png', 32, 32);
     game.load.spritesheet('viruses', 'assets/images/viruses.png', 32, 32);
     game.load.spritesheet('changers', 'assets/images/changers.png', 32, 32);
+    game.load.spritesheet('transformation', 'assets/images/transformation.png', 32, 32);
 
     // SFX
     game.load.audio('capture', 'assets/sounds/capture.mp3');
