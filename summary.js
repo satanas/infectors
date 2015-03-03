@@ -2,20 +2,37 @@
 
 var summaryState = {
   create: function() {
-    var time = game.global.time / 1000;
-    var min = Math.floor(time / 60).toString();
-    var sec = Math.floor(time % 60).toString();
-    if (min.length === 1) min = "0" + min
-    if (sec.length === 1) sec = "0" + sec
+    var storage = new Storage();
     //game.add.image(0, 0, 'summary');
     bitmapTextCentered(90, 'engeexpa', 'STAGE CLEARED', 38);
+
+    var bestMovesKey = ['level', game.global.level, 'moves'].join('.');
+    var bestTimeKey = ['level', game.global.level, 'time'].join('.');
+
+    var bestMoves = storage.read(bestMovesKey);
+    var bestTime = storage.read(bestTimeKey);
+
     // Score
-    game.add.bitmapText(235, 170, 'engeexpa', 'Your steps:', 25);
-    game.add.bitmapText(240, 200, 'engeexpa', 'Best steps:', 25);
-    game.add.bitmapText(220, 230, 'engeexpa', 'Your time:', 25);
-    game.add.bitmapText(385, 170, 'engeexpa', game.global.moves.toString(), 25);
-    game.add.bitmapText(385, 200, 'engeexpa', game.global.moves.toString(), 25);
-    game.add.bitmapText(350, 230, 'engeexpa', min + ':' + sec, 25);
+    var movesFont = uiFonts.TITLE;
+    var timeFont = uiFonts.TITLE;
+    if (game.global.moves < bestMoves) {
+      movesFont = uiFonts.RECORD;
+      bitmapTextCentered(330, uiFonts.RECORD, 'You have set a new moves record!', 25);
+      storage.save(bestMovesKey, game.global.moves);
+    }
+    if (game.global.time < bestTime) {
+      timeFont = uiFonts.RECORD;
+      bitmapTextCentered(360, uiFonts.RECORD, 'You have set a new time record!', 25);
+      storage.save(bestTimeKey, game.global.time);
+    }
+    game.add.bitmapText(235, 170, uiFonts.TITLE, 'Your moves:', 25);
+    game.add.bitmapText(385, 170, movesFont, game.global.moves.toString(), 25);
+    game.add.bitmapText(240, 200, uiFonts.TITLE, 'Best moves:', 25);
+    game.add.bitmapText(385, 200, uiFonts.TITLE, bestMoves || '--', 25);
+    game.add.bitmapText(240, 230, uiFonts.TITLE, 'Your time:', 25);
+    game.add.bitmapText(370, 230, timeFont, humanizeTime(game.global.time), 25);
+    game.add.bitmapText(245, 260, uiFonts.TITLE, 'Best time:', 25);
+    game.add.bitmapText(370, 260, uiFonts.TITLE, humanizeTime(bestTime) || '--', 25);
 
     bitmapTextCentered(439, 'engeexpa', 'Press ENTER to play next level', 18);
 

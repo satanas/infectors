@@ -9,6 +9,7 @@ var loadState = {
     game.load.setPreloadSprite(progressBar);
 
     game.load.bitmapFont('zerothre', 'assets/fonts/zerothre.png', 'assets/fonts/zerothre.fnt');
+    game.load.bitmapFont('record', 'assets/fonts/record.png', 'assets/fonts/record.fnt');
 
     game.load.image('title', 'assets/images/title.png');
     game.load.image('walls', 'assets/images/walls.png');
