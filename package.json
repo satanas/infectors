@@ -1,0 +1,19 @@
+{
+  "name": "Infectors",
+  "main": "index.html",
+  "version": "0.8.0",
+  "author": "Wil Alvarez",
+  "nodejs": true,
+  "window": {
+    "title": "Infectors",
+    "width": 640,
+    "min_width": 640,
+    "max_width": 640,
+    "height": 480,
+    "min_height": 480,
+    "max_height": 480,
+    "toolbar": false,
+    "resizable": "false",
+    "position": "center"
+  }
+}
