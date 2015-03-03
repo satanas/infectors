@@ -18,6 +18,8 @@ var loadState = {
     game.load.image('menu', 'assets/images/menu.png');
     game.load.image('cursor', 'assets/images/cursor.png');
     game.load.image('hud', 'assets/images/hud.png');
+    game.load.image('arrowleft', 'assets/images/arrow-left.png');
+    game.load.image('arrowright', 'assets/images/arrow-right.png');
 
     game.load.spritesheet('hero', 'assets/images/character.png', 32, 32);
     game.load.spritesheet('capsules', 'assets/images/capsules.png', 32, 32);
