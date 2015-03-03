@@ -7,6 +7,11 @@ body {
   background-color: #111;
 }
 
+a {
+  color: #666;
+  text-decoration: none;
+}
+
 #container {
   margin: 10px auto;
   width: 640px;
