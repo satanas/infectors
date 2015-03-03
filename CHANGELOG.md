@@ -1,5 +1,9 @@
-0.8.0
-=====
+0.9.0, March 03, 2015
+====================
+* Level selection
+
+0.8.0, March 02, 2015
+=====================
 * Sokoban-like mechanics
 * 10 levels with tutorials
 * BGM and SFX
