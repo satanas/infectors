@@ -49,3 +49,14 @@ function humanizeTime(time) {
   if (sec.length === 1) sec = "0" + sec
   return min + ':' + sec;
 }
+
+function deleteStats() {
+  var storage = new Storage();
+  storage.delete('level.current');
+  for (var i=1; i<=game.global.totalLevels; i++) {
+    var bestMovesKey = ['level', i, 'moves'].join('.');
+    var bestTimeKey = ['level', i, 'time'].join('.');
+    storage.delete(bestMovesKey);
+    storage.delete(bestTimeKey);
+  }
+}

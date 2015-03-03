@@ -20,3 +20,8 @@ Storage.prototype.read = function(key) {
   if (!this.enabled) return null;
   return localStorage.getItem(key);
 };
+
+Storage.prototype.delete = function(key) {
+  if (!this.enabled) return null;
+  localStorage.removeItem(key);
+};
