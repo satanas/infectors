@@ -9,6 +9,8 @@ var AudioPool = function(keys) {
   }
 };
 
+AudioPool.prototype.constructor = AudioPool;
+
 AudioPool.prototype.randomPlay = function(loop, volume) {
   var volume = (volume === undefined) ? 1.0 : volume
   var loop = (loop === undefined) ? false : loop
