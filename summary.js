@@ -15,12 +15,12 @@ var summaryState = {
     // Score
     var movesFont = uiFonts.TITLE;
     var timeFont = uiFonts.TITLE;
-    if (game.global.moves < bestMoves) {
+    if (bestMoves === null || game.global.moves < bestMoves) {
       movesFont = uiFonts.RECORD;
       bitmapTextCentered(330, uiFonts.RECORD, 'You have set a new moves record!', 25);
       storage.save(bestMovesKey, game.global.moves);
     }
-    if (game.global.time < bestTime) {
+    if (bestTime === null || game.global.time < bestTime) {
       timeFont = uiFonts.RECORD;
       bitmapTextCentered(360, uiFonts.RECORD, 'You have set a new time record!', 25);
       storage.save(bestTimeKey, game.global.time);
@@ -41,10 +41,12 @@ var summaryState = {
     game.sound.stopAll();
     this.bgmSound = game.add.audio('finish');
     this.bgmSound.play();
+
+    game.global.level += 1;
+    storage.save('level.current', game.global.level);
   },
 
   next: function() {
-    game.global.level += 1;
     game.state.start('play');
   }
 };
