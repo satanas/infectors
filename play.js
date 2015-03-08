@@ -60,6 +60,13 @@ var playState = {
     var variant = e.properties.color;
     this.player = new Hero(e.x, y, variant, facing, this.map);
 
+    //Ingame menu shortcuts
+    this.quitKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
+    this.quitKey.onUp.add(this.quitGame, this);
+
+    this.restartKey = game.input.keyboard.addKey(Phaser.Keyboard.R);
+    this.restartKey.onUp.add(this.restartGame, this);
+
     //groups.walls.debug = true;
     this.pausedGame = false;
     this.pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
@@ -100,6 +107,14 @@ var playState = {
       this.ingameMenu.hide();
     }
     game.paused = this.pausedGame;
+  },
+
+  restartGame: function() {
+    game.state.start('play');
+  },
+
+  quitGame: function() {
+    game.state.start('menu');
   },
 
   //render: function() {
