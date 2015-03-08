@@ -5,7 +5,7 @@ game.global = {
   level: 1,
   moves: 0,
   time: 0,
-  totalLevels: 10
+  totalLevels: 21
 }
 var debug = false;
 var groups = {};
