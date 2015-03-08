@@ -186,12 +186,12 @@
          "name":"Hero",
          "objects":[
                 {
-                 "gid":62,
+                 "gid":74,
                  "height":0,
                  "name":"Hero",
                  "properties":
                     {
-                     "color":"blue"
+                     "color":"green"
                     },
                  "type":"",
                  "visible":true,
