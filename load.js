@@ -34,6 +34,7 @@ var loadState = {
     game.load.audio('option', 'assets/sounds/cursor.mp3');
     game.load.audio('select', 'assets/sounds/select.mp3');
     game.load.audio('win', 'assets/sounds/win.mp3');
+    game.load.audio('blocked', 'assets/sounds/blocked.mp3');
 
     // BGM
     game.load.audio('main', 'assets/sounds/main.mp3', 0.75, true);

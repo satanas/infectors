@@ -26,6 +26,7 @@ var Hero = function(x, y, variant, facing, map) {
 
   this.changerSound = game.add.audio('changer');
   this.walkingSound = game.add.audio('walking');
+  this.blockedSound = game.add.audio('blocked');
 
   this.render();
   game.add.existing(this);
@@ -77,7 +78,11 @@ Hero.prototype.move = function(xDir, yDir) {
         game.global.moves += 1;
         this.render();
       }, this);
+    } else {
+      this.blockedSound.play();
     }
+  } else {
+    this.blockedSound.play();
   }
 };
 
