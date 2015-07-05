@@ -1,9 +1,8 @@
 {
   "name": "Infectors",
   "description": "Infectors is a sokoban-like game where you have to solve puzzles pushing cryogenic capsules toward viruses to capture them and save the earth from the invasion. At the moment the game count with 21 levels.",
-  "launch_path": "/index.html",
   "icons": {
-    "128": "/assets/images/webapp-icon.png"
+    "128": "/infectors/assets/images/webapp-icon.png"
   },
   "developer": {
     "name": "Wil Alvarez",
