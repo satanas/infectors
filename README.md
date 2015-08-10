@@ -8,3 +8,7 @@ This version is a [Phaser](http://phaser.io) port from the
 in December 2007.
 
 [Play it!](http://satanas.github.io/infectors)
+
+This game is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
