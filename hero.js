@@ -15,7 +15,7 @@ var Hero = function(x, y, variant, facing, map) {
     [DIRECTION.DOWN, DIRECTION.LEFT, DIRECTION.RIGHT, DIRECTION.UP].forEach(function (dir) {
       var arr = [];
       for (var j=0; j < 3 ; ++j) {
-        arr.push((++i) + 0);
+        arr.push(++i);
       }
       t.animations.add(t.getAnimName(dir, color), arr, 12, true);
     })
