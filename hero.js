@@ -9,20 +9,17 @@ var Hero = function(x, y, variant, facing, map) {
   this.direction = facing;
   this.cursors = game.input.keyboard.createCursorKeys();
 
-  this.animations.add(this.getAnimName(DIRECTION.DOWN, colorVariant.RED), [0, 1, 2], 12, true);
-  this.animations.add(this.getAnimName(DIRECTION.LEFT, colorVariant.RED), [3, 4, 5], 12, true);
-  this.animations.add(this.getAnimName(DIRECTION.RIGHT, colorVariant.RED), [6, 7, 8], 12, true);
-  this.animations.add(this.getAnimName(DIRECTION.UP, colorVariant.RED), [9, 10, 11], 12, true);
-
-  this.animations.add(this.getAnimName(DIRECTION.DOWN, colorVariant.BLUE), [12, 13, 14], 12, true);
-  this.animations.add(this.getAnimName(DIRECTION.LEFT, colorVariant.BLUE), [15, 16, 17], 12, true);
-  this.animations.add(this.getAnimName(DIRECTION.RIGHT, colorVariant.BLUE), [18, 19, 20], 12, true);
-  this.animations.add(this.getAnimName(DIRECTION.UP, colorVariant.BLUE), [21, 22, 23], 12, true);
-
-  this.animations.add(this.getAnimName(DIRECTION.DOWN, colorVariant.GREEN), [24, 25, 26], 12, true);
-  this.animations.add(this.getAnimName(DIRECTION.LEFT, colorVariant.GREEN), [27, 28, 29], 12, true);
-  this.animations.add(this.getAnimName(DIRECTION.RIGHT, colorVariant.GREEN), [30, 31, 32], 12, true);
-  this.animations.add(this.getAnimName(DIRECTION.UP, colorVariant.GREEN), [33, 34, 35], 12, true);
+  var t = this;
+  var i = -1;
+  [colorVariant.RED, colorVariant.BLUE, colorVariant.GREEN].forEach(function (color) {
+    [DIRECTION.DOWN, DIRECTION.LEFT, DIRECTION.RIGHT, DIRECTION.UP].forEach(function (dir) {
+      var arr = [];
+      for (var j=0; j < 3 ; ++j) {
+        arr.push(++i);
+      }
+      t.animations.add(t.getAnimName(dir, color), arr, 12, true);
+    })
+  });
 
   this.changerSound = game.add.audio('changer');
   this.walkingSound = game.add.audio('walking');
