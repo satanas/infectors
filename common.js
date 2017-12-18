@@ -60,3 +60,19 @@ function deleteStats() {
     storage.delete(bestTimeKey);
   }
 }
+
+function executeGameEvent(event, param) {
+  console.log(event, param);
+  if (parent.hasOwnProperty('cmdGameEvent')) {
+    if (param !== undefined && param !== null) {
+      parent.cmdGameEvent(event, String(param));
+    } else {
+      parent.cmdGameEvent(event);
+    }
+  }
+}
+
+function unlockAllLevels() {
+  var storage = new Storage();
+  storage.save('level.current', '21');
+}

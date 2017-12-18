@@ -2,14 +2,16 @@
 
 var loadState = {
   preload: function() {
-    bitmapTextCentered(150, 'engeexpa', 'Loading...', 30);
+    bitmapTextCentered(350, 'engeexpa', 'Loading...', 30);
 
-    var progressBar = game.add.sprite(game.world.centerX, 200, 'progressbar');
-    progressBar.anchor.setTo(0.5, 0.5);
+    var splash = game.add.sprite(10, 10, 'splash');
+    var progressBar = game.add.sprite(game.world.centerX - 50, 400, 'progressbar');
+    progressBar.anchor.setTo(0);
     game.load.setPreloadSprite(progressBar);
 
     game.load.bitmapFont('zerothre', 'assets/fonts/zerothre.png', 'assets/fonts/zerothre.fnt');
     game.load.bitmapFont('record', 'assets/fonts/record.png', 'assets/fonts/record.fnt');
+    game.load.bitmapFont('instructions', 'assets/fonts/instructions.png', 'assets/fonts/instructions.fnt');
 
     game.load.image('title', 'assets/images/title.png');
     game.load.image('walls', 'assets/images/walls.png');

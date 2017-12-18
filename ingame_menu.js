@@ -73,6 +73,7 @@ IngameMenu.prototype.executeMenuOption = function() {
   this.selectSound.play();
 
   if (this.option === 1) {
+    executeGameEvent('replay', game.global.level);
     game.state.start('play');
   } else if (this.option === 2) {
     game.state.start('menu');

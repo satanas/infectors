@@ -114,6 +114,7 @@ var playState = {
   },
 
   restartGame: function() {
+    executeGameEvent('replay', game.global.level);
     game.state.start('play');
   },
 
