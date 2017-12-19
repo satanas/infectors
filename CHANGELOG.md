@@ -1,3 +1,11 @@
+1.0.3, December 18, 2017
+=======================
+* Removed duplicated code
+* Fixed typos and grammar errors
+* Improving main and in-game menus
+* Centering and scaling correctly for different resolutions
+* Added .tmx sources for maps
+
 1.0.0, March 08, 2015
 ====================
 * Keys to mute, restart and quit
