@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="grounds" tilewidth="32" tileheight="32">
+  <image source="../assets/images/grounds.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="17" name="walls" tilewidth="32" tileheight="32">
+  <image source="../assets/images/walls.png" width="128" height="96"/>
+ </tileset>
+ <tileset firstgid="29" name="changers" tilewidth="32" tileheight="32">
+  <image source="../assets/images/changers.png" width="96" height="32"/>
+ </tileset>
+ <tileset firstgid="32" name="capsules" tilewidth="32" tileheight="32">
+  <image source="../assets/images/capsules.png" width="96" height="64"/>
+ </tileset>
+ <tileset firstgid="38" name="viruses" tilewidth="32" tileheight="32">
+  <image source="../assets/images/viruses.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="50" name="hero" tilewidth="32" tileheight="32">
+  <image source="../assets/images/character.png" width="416" height="96"/>
+ </tileset>
+ <layer name="Grounds" width="20" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="Walls" width="20" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,18,18,18,18,18,18,18,0,0,0,0,0,0,0,
+0,0,0,0,0,0,18,0,0,0,0,0,18,0,0,0,0,0,0,0,
+0,0,0,0,0,0,18,0,0,0,0,0,18,0,0,0,0,0,0,0,
+0,0,0,0,0,0,18,0,0,0,0,0,18,0,0,0,0,0,0,0,
+0,0,0,0,0,0,18,0,0,0,0,0,18,0,0,0,0,0,0,0,
+0,0,0,0,0,0,18,0,18,0,18,0,18,0,0,0,0,0,0,0,
+0,0,0,0,0,0,18,0,0,0,0,0,18,0,0,0,0,0,0,0,
+0,0,0,0,0,0,18,18,18,18,18,18,18,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup name="Changers" width="20" height="15">
+  <object name="Red" gid="29" x="288" y="128">
+   <properties>
+    <property name="type" value="red"/>
+   </properties>
+  </object>
+  <object name="Blue" gid="30" x="224" y="128">
+   <properties>
+    <property name="type" value="blue"/>
+   </properties>
+  </object>
+  <object name="Green" gid="31" x="352" y="128">
+   <properties>
+    <property name="type" value="green"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Capsules" width="20" height="15">
+  <object name="Red" gid="32" x="288" y="192">
+   <properties>
+    <property name="type" value="red"/>
+   </properties>
+  </object>
+  <object name="Blue" gid="33" x="224" y="192">
+   <properties>
+    <property name="type" value="blue"/>
+   </properties>
+  </object>
+  <object name="Green" gid="34" x="352" y="192">
+   <properties>
+    <property name="type" value="green"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Viruses" width="20" height="15">
+  <object name="Red" gid="38" x="288" y="256">
+   <properties>
+    <property name="type" value="red"/>
+   </properties>
+  </object>
+  <object name="Blue" gid="39" x="224" y="256">
+   <properties>
+    <property name="type" value="blue"/>
+   </properties>
+  </object>
+  <object name="Green" gid="40" x="352" y="256">
+   <properties>
+    <property name="type" value="green"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Hero" width="20" height="15">
+  <object name="Hero" gid="50" x="288" y="160">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="type" value="hero"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
