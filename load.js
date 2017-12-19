@@ -10,6 +10,7 @@ var loadState = {
 
     game.load.bitmapFont('zerothre', 'assets/fonts/zerothre.png', 'assets/fonts/zerothre.fnt');
     game.load.bitmapFont('record', 'assets/fonts/record.png', 'assets/fonts/record.fnt');
+    game.load.bitmapFont('instructions', 'assets/fonts/instructions.png', 'assets/fonts/instructions.fnt');
 
     game.load.image('title', 'assets/images/title.png');
     game.load.image('walls', 'assets/images/walls.png');
