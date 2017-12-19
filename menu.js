@@ -4,9 +4,17 @@ var menuState = {
   create: function() {
     game.sound.stopAll();
     game.add.image(0, 0, 'title');
-    bitmapTextCentered(430, uiFonts.INSTRUCTIONS, 'Created by Wil Alvarez', 14);
-    bitmapTextCentered(450, uiFonts.INSTRUCTIONS, 'Music by David Senabre', 14);
+    var licenseImage = game.add.image(game.world.centerX, 425, 'creativecommons');
+    licenseImage.scale.setTo(0.8, 0.8);
+    licenseImage.anchor.set(0.5);
+
     bitmapTextCentered(350, uiFonts.TITLE, 'Press ENTER to start', 28);
+
+    var licenseLabel = game.add.text(80, 450,
+      'Created by Wil Alvarez. Music by David Senabre.\nLicensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.',
+      {font: '12px Arial', fill: '#fff', align: 'center'});
+    //licenseLabel.anchor.set(0.5);
+    licenseLabel.x = Math.round(licenseLabel.x);
 
     var storage = new Storage();
 

@@ -21,6 +21,7 @@ var loadState = {
     game.load.image('hud', 'assets/images/hud.png');
     game.load.image('arrowleft', 'assets/images/arrow-left.png');
     game.load.image('arrowright', 'assets/images/arrow-right.png');
+    game.load.image('creativecommons', 'assets/images/cc-by-nc-sa-88x31.png');
 
     game.load.spritesheet('hero', 'assets/images/character.png', 32, 32);
     game.load.spritesheet('capsules', 'assets/images/capsules.png', 32, 32);
